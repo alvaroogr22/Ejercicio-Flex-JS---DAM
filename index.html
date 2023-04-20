@@ -5,25 +5,110 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio dia 20</title>
-    <link rel="stylesheet" href="style.css">
+    <title>circulos y piramides</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .circulo {
+            width: 30%;
+            padding-bottom: 30%;
+            border-radius: 50%;
+            background-color: #ff6600;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .zona {
+            width: 33.33%;
+            height: 33.33%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="main">
-        <div id="row1">
-            <div id="1"></div>
-            <div id="2"></div>
-        </div>
-        <div id="row2">
-            <div id="3"></div>
-        </div>
-        <div id="row3">
-            <div id="4"></div>
-            <div id="5"></div>
-        </div>
+
+    <div class="zona" data-number="1">
+        <div class="circulo" id="circulo1"></div>
     </div>
-    <script src="script.js"></script>
+
+    <div class="zona"></div>
+
+    <div class="zona" data-number="2">
+        <div class="circulo" id="circulo2"></div>
+    </div>
+
+    <div class="zona"></div>
+
+    <div class="zona" data-number="3">
+        <div class="circulo" id="circulo3"></div>
+    </div>
+
+    <div class="zona"></div>
+
+    <div class="zona" data-number="4">
+        <div class="circulo" id="circulo4"></div>
+    </div>
+
+    <div class="zona"></div>
+
+    <div class="zona" data-number="5">
+        <div class="circulo" id="circulo5"></div>
+    </div>
+
+    <script>
+
+        function crearPiramide(elemento) {
+            var altura = 5;
+            var caracteres = "";
+
+            for (var i = 0; i < altura; i++) {
+                caracteres += "#";
+                elemento.innerText += caracteres + "\n";
+            }
+        }
+
+
+        const circuloNumber = parseInt(prompt("Introduce el número del círculo que quieres cambiar (1-5):"));
+        const circulo = document.getElementById(`circulo${circuloNumber}`);
+        const color = prompt("Introduce el color para el círculo (a = rojo, b = azul, c = verde, d = morado):");
+
+        switch (color) {
+            case "a":
+                circulo.style.backgroundColor = "red";
+                break;
+            case "b":
+                circulo.style.backgroundColor = "blue";
+                break;
+            case "c":
+                circulo.style.backgroundColor = "green";
+                break;
+            case "d":
+                circulo.style.backgroundColor = "purple";
+                break;
+            default:
+                alert("Color no válido. Los colores válidos son a, b, c y d.");
+        }
+
+        const crearPiramideRespuesta = prompt("¿Deseas crear una pirámide en este círculo? (s/n)");
+
+        if (crearPiramideRespuesta === "s") {
+            crearPiramide(circulo);
+        }
+    </script>
 </body>
 
 </html>
